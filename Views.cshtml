@@ -1,0 +1,29 @@
+﻿@page
+@model IEnumerable<Meal>
+
+<h1>Meals</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var meal in Model)
+        {
+            <tr>
+                <td>@meal.Name</td>
+                <td>@meal.Category?.Name</td>
+                <td>@meal.Price</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = meal.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = meal.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
